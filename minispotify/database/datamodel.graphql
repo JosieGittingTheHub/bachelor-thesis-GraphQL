@@ -1,5 +1,20 @@
+type Vote {
+  id: ID! @unique
+  playlist: Playlist!
+  user: User!
+}
 type Playlist {
   id: ID! @unique
   title: String!
   spotifyURI: String!
+  postedBy: User
+  votes: [Vote!]!
+}
+type User {
+  id: ID! @unique
+  name: String!
+  email: String! @unique
+  password: String!
+  playlists: [Playlist!]!
+  votes: [Vote!]!
 }
