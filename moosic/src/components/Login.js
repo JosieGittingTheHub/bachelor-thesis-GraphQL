@@ -79,9 +79,10 @@ class Login extends Component {
     this.props.history.push(`/`)
   }
 
-  _saveUserData = (token) => {
+  _saveUserData = token => {
     localStorage.setItem(AUTH_TOKEN, token)
   }
+  
 }
 
 const SIGNUP_MUTATION = gql`
