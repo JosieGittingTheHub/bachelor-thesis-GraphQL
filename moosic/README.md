@@ -5,7 +5,7 @@ moosic is a mobile web app that has been developed during the course [Mobile Web
 
 ## Functionality
 
-moosic provides a list of Spotify playlists depending on the users mood.
+moosic provides a list of Spotify playlists depending on the users mood, which then can be played directly in the app.
 
 
 ## Usage
