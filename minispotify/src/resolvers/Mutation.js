@@ -52,12 +52,15 @@ async function vote(parent, args, context, info) {
   }
 
   return context.db.mutation.createVote(
-    {
-      data: {
-        user: { connect: { id: userId } },
-        playlist: { connect: { id: playlistId } },
-      },
-    },
+    { where: { id: playlistId } },
+    info,
+  )
+}
+function remove(parent, args, context, info) {
+  const { playlistId } = args
+
+  return context.db.mutation.deletePlaylist(
+    { where: { id: playlistId } },
     info,
   )
 }
@@ -65,5 +68,6 @@ async function vote(parent, args, context, info) {
 module.exports = {
   post,
   signup,
-  login
+  login,
+  remove
 }

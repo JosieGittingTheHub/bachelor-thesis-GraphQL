@@ -241,16 +241,16 @@ input PlaylistUpdateManyWithoutPostedByInput {
   connect: [PlaylistWhereUniqueInput!]
   disconnect: [PlaylistWhereUniqueInput!]
   delete: [PlaylistWhereUniqueInput!]
-  update: [PlaylistUpdateWithoutPostedByInput!]
-  upsert: [PlaylistUpsertWithoutPostedByInput!]
+  update: [PlaylistUpdateWithWhereUniqueWithoutPostedByInput!]
+  upsert: [PlaylistUpsertWithWhereUniqueWithoutPostedByInput!]
 }
 
 input PlaylistUpdateOneWithoutVotesInput {
   create: PlaylistCreateWithoutVotesInput
   connect: PlaylistWhereUniqueInput
-  disconnect: PlaylistWhereUniqueInput
-  delete: PlaylistWhereUniqueInput
-  update: PlaylistUpdateWithoutVotesInput
+  disconnect: Boolean
+  delete: Boolean
+  update: PlaylistUpdateWithoutVotesDataInput
   upsert: PlaylistUpsertWithoutVotesInput
 }
 
@@ -260,32 +260,26 @@ input PlaylistUpdateWithoutPostedByDataInput {
   votes: VoteUpdateManyWithoutPlaylistInput
 }
 
-input PlaylistUpdateWithoutPostedByInput {
-  where: PlaylistWhereUniqueInput!
-  data: PlaylistUpdateWithoutPostedByDataInput!
-}
-
 input PlaylistUpdateWithoutVotesDataInput {
   title: String
   spotifyURI: String
   postedBy: UserUpdateOneWithoutPlaylistsInput
 }
 
-input PlaylistUpdateWithoutVotesInput {
+input PlaylistUpdateWithWhereUniqueWithoutPostedByInput {
   where: PlaylistWhereUniqueInput!
-  data: PlaylistUpdateWithoutVotesDataInput!
-}
-
-input PlaylistUpsertWithoutPostedByInput {
-  where: PlaylistWhereUniqueInput!
-  update: PlaylistUpdateWithoutPostedByDataInput!
-  create: PlaylistCreateWithoutPostedByInput!
+  data: PlaylistUpdateWithoutPostedByDataInput!
 }
 
 input PlaylistUpsertWithoutVotesInput {
-  where: PlaylistWhereUniqueInput!
   update: PlaylistUpdateWithoutVotesDataInput!
   create: PlaylistCreateWithoutVotesInput!
+}
+
+input PlaylistUpsertWithWhereUniqueWithoutPostedByInput {
+  where: PlaylistWhereUniqueInput!
+  update: PlaylistUpdateWithoutPostedByDataInput!
+  create: PlaylistCreateWithoutPostedByInput!
 }
 
 input PlaylistWhereInput {
@@ -620,18 +614,18 @@ input UserUpdateInput {
 input UserUpdateOneWithoutPlaylistsInput {
   create: UserCreateWithoutPlaylistsInput
   connect: UserWhereUniqueInput
-  disconnect: UserWhereUniqueInput
-  delete: UserWhereUniqueInput
-  update: UserUpdateWithoutPlaylistsInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateWithoutPlaylistsDataInput
   upsert: UserUpsertWithoutPlaylistsInput
 }
 
 input UserUpdateOneWithoutVotesInput {
   create: UserCreateWithoutVotesInput
   connect: UserWhereUniqueInput
-  disconnect: UserWhereUniqueInput
-  delete: UserWhereUniqueInput
-  update: UserUpdateWithoutVotesInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateWithoutVotesDataInput
   upsert: UserUpsertWithoutVotesInput
 }
 
@@ -642,11 +636,6 @@ input UserUpdateWithoutPlaylistsDataInput {
   votes: VoteUpdateManyWithoutUserInput
 }
 
-input UserUpdateWithoutPlaylistsInput {
-  where: UserWhereUniqueInput!
-  data: UserUpdateWithoutPlaylistsDataInput!
-}
-
 input UserUpdateWithoutVotesDataInput {
   name: String
   email: String
@@ -654,19 +643,12 @@ input UserUpdateWithoutVotesDataInput {
   playlists: PlaylistUpdateManyWithoutPostedByInput
 }
 
-input UserUpdateWithoutVotesInput {
-  where: UserWhereUniqueInput!
-  data: UserUpdateWithoutVotesDataInput!
-}
-
 input UserUpsertWithoutPlaylistsInput {
-  where: UserWhereUniqueInput!
   update: UserUpdateWithoutPlaylistsDataInput!
   create: UserCreateWithoutPlaylistsInput!
 }
 
 input UserUpsertWithoutVotesInput {
-  where: UserWhereUniqueInput!
   update: UserUpdateWithoutVotesDataInput!
   create: UserCreateWithoutVotesInput!
 }
@@ -1015,8 +997,8 @@ input VoteUpdateManyWithoutPlaylistInput {
   connect: [VoteWhereUniqueInput!]
   disconnect: [VoteWhereUniqueInput!]
   delete: [VoteWhereUniqueInput!]
-  update: [VoteUpdateWithoutPlaylistInput!]
-  upsert: [VoteUpsertWithoutPlaylistInput!]
+  update: [VoteUpdateWithWhereUniqueWithoutPlaylistInput!]
+  upsert: [VoteUpsertWithWhereUniqueWithoutPlaylistInput!]
 }
 
 input VoteUpdateManyWithoutUserInput {
@@ -1024,35 +1006,35 @@ input VoteUpdateManyWithoutUserInput {
   connect: [VoteWhereUniqueInput!]
   disconnect: [VoteWhereUniqueInput!]
   delete: [VoteWhereUniqueInput!]
-  update: [VoteUpdateWithoutUserInput!]
-  upsert: [VoteUpsertWithoutUserInput!]
+  update: [VoteUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [VoteUpsertWithWhereUniqueWithoutUserInput!]
 }
 
 input VoteUpdateWithoutPlaylistDataInput {
   user: UserUpdateOneWithoutVotesInput
 }
 
-input VoteUpdateWithoutPlaylistInput {
-  where: VoteWhereUniqueInput!
-  data: VoteUpdateWithoutPlaylistDataInput!
-}
-
 input VoteUpdateWithoutUserDataInput {
   playlist: PlaylistUpdateOneWithoutVotesInput
 }
 
-input VoteUpdateWithoutUserInput {
+input VoteUpdateWithWhereUniqueWithoutPlaylistInput {
+  where: VoteWhereUniqueInput!
+  data: VoteUpdateWithoutPlaylistDataInput!
+}
+
+input VoteUpdateWithWhereUniqueWithoutUserInput {
   where: VoteWhereUniqueInput!
   data: VoteUpdateWithoutUserDataInput!
 }
 
-input VoteUpsertWithoutPlaylistInput {
+input VoteUpsertWithWhereUniqueWithoutPlaylistInput {
   where: VoteWhereUniqueInput!
   update: VoteUpdateWithoutPlaylistDataInput!
   create: VoteCreateWithoutPlaylistInput!
 }
 
-input VoteUpsertWithoutUserInput {
+input VoteUpsertWithWhereUniqueWithoutUserInput {
   where: VoteWhereUniqueInput!
   update: VoteUpdateWithoutUserDataInput!
   create: VoteCreateWithoutUserInput!
