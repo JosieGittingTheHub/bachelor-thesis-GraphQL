@@ -5,13 +5,16 @@ minispotify is an implementation of a GraphQL server that enables a part of the 
 
 ## Development
 
-Starting the development environment with Playground as IDE
+Starting the development environment with Playground as IDE:
+
 `$ npm run dev`
 
-Deploy changes to the Prisma database service
+Deploy changes to the Prisma database service:
+
 `$ npm prisma deploy`
 
 
 ## Usage
-Starting only the server
+Starting only the server:
+
 `$ npm start`
