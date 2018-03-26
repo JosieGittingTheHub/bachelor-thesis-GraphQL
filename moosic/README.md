@@ -10,8 +10,10 @@ moosic provides a list of Spotify playlists depending on the users mood, which t
 
 ## Usage
 
-1. Install project dependencies
+1. Install project dependencies:
+
 `$ npm install`
 
-2. Start the app 
+2. Start the app:
+
 `$ npm start`
