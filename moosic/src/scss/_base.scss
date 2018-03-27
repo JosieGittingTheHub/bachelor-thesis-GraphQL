@@ -1,0 +1,54 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-size: 20px;
+  margin: 0;
+  font-family: $font-text;
+  background: $color-primary;
+  font-weight: $font-light;
+}
+
+h3 {
+  font-weight: $font-light;
+}
+
+.moosic-label{
+  padding: 1.2rem;
+  width: 30%;
+  max-width: 15rem;
+  display: block;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0.5rem;
+  left: 0;
+
+  @media screen and (min-width: $screen-md) {
+    padding-top: 3rem;
+    position: relative;
+    margin-left: 0;
+    width: 30%;
+  }
+
+  &--login {
+    position: relative;
+    padding-top: 5rem;
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+
+    @media screen and (min-width: $screen-md) {
+      position: relative;
+      margin-left: 0;
+      width: 30%;
+    }
+  }
+
+  &--result {
+    display: none;
+  }
+  @media screen and (min-width: $screen-md) {
+    display: block;
+  }
+}

@@ -1,28 +1,302 @@
-.App {
+html, body {
+  height: 100%; }
+
+body {
+  font-size: 20px;
+  margin: 0;
+  font-family: sans-serif;
+  background: #282828;
+  font-weight: 100; }
+
+h3 {
+  font-weight: 100; }
+
+.moosic-label {
+  padding: 1.2rem;
+  width: 30%;
+  max-width: 15rem;
+  display: block;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0.5rem;
+  left: 0; }
+  @media screen and (min-width: 992px) {
+    .moosic-label {
+      padding-top: 3rem;
+      position: relative;
+      margin-left: 0;
+      width: 30%; } }
+  .moosic-label--login {
+    position: relative;
+    padding-top: 5rem;
+    width: 50%;
+    display: block;
+    margin: 0 auto; }
+    @media screen and (min-width: 992px) {
+      .moosic-label--login {
+        position: relative;
+        margin-left: 0;
+        width: 30%; } }
+  .moosic-label--result {
+    display: none; }
+  @media screen and (min-width: 992px) {
+    .moosic-label {
+      display: block; } }
+
+#root, .app, .app__content {
+  height: 100%;
+  width: 100%; }
+
+.login-scene {
+  height: 100%;
+  background: url("./assets/startscreen-background-mobile.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  font-style: sans-serif;
+  color: white; }
+  @media screen and (min-width: 992px) {
+    .login-scene {
+      background: url("./assets/startscreen-background-desktop.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      padding: 1em 10%; } }
+
+.slick-dots {
+  position: relative; }
+  .slick-dots li {
+    margin-left: 0em;
+    margin-right: 0em; }
+    .slick-dots li button:before, .slick-dots li button:focus:before, .slick-dots li button:hover:before {
+      color: #ffffff !important;
+      opacity: .50; }
+    .slick-dots li.slick-active button:before {
+      opacity: .99; }
+
+.slider-item {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
   color: white;
-}
+  font-family: "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; }
 
-.App-title {
-  font-size: 1.5em;
-}
+.slider-item__text {
+  margin: 0 10%;
+  font-size: 1rem;
+  font-family: "HelveticaNeue-Thin", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
 
-.App-intro {
-  font-size: large;
-}
+.login-info-view {
+  display: none;
+  margin-top: 3em; }
+  @media screen and (min-width: 992px) {
+    .login-info-view {
+      display: flex;
+      justify-content: space-around;
+      align-items: center; } }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+.login-info-carousel {
+  display: block;
+  margin-top: 1.5rem; }
+  @media screen and (min-width: 992px) {
+    .login-info-carousel {
+      display: none; } }
+
+.login-info-view__image, .login-info-carousel__image {
+  width: auto;
+  height: 3rem;
+  margin: auto;
+  margin-top: 2em; }
+  @media screen and (min-width: 992px) {
+    .login-info-view__image, .login-info-carousel__image {
+      margin-left: 42%; } }
+
+.login-button {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 2rem;
+  background: #1DB954;
+  width: 60%;
+  border-radius: 50px;
+  padding: 0.8rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  outline: none;
+  font-size: 0.75rem;
+  text-align: center; }
+  @media screen and (min-width: 992px) {
+    .login-button {
+      bottom: 9em;
+      font-size: 1rem;
+      width: 25%;
+      padding: 1rem 2rem; } }
+
+.tag-scene {
+  text-align: center;
+  padding: 1em; }
+  @media screen and (min-width: 992px) {
+    .tag-scene {
+      padding: 1em 10%; } }
+
+.search__input {
+  padding: 0.4rem 2rem;
+  width: 80%;
+  font-size: 1.5rem;
+  border-style: none;
+  background-color: #ffffff;
+  border-radius: 50px;
+  margin-bottom: 0.5em; }
+  .search__input:active, .search__input:focus, .search__input:hover {
+    outline: none; }
+  @media screen and (min-width: 992px) {
+    .search__input {
+      margin-top: 1.3rem;
+      height: 4rem;
+      width: 60%; } }
+
+.tag-scene__description {
+  color: #606060;
+  top: 35%;
+  position: fixed;
+  z-index: -100;
+  text-align: center;
+  max-width: 90%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto; }
+  @media screen and (min-width: 992px) {
+    .tag-scene__description {
+      top: 52%;
+      max-width: 40%; } }
+
+.tag-scene__description__img {
+  max-width: 40%; }
+
+.tag-scene__logo {
+  max-width: 28%;
+  position: absolute;
+  bottom: 1.8rem;
+  left: 1.6rem; }
+  @media screen and (min-width: 992px) {
+    .tag-scene__logo {
+      top: 1.8rem;
+      left: 6rem;
+      max-width: 20rem; } }
+
+.tag-scene__submit {
+  position: absolute;
+  bottom: 1.5em;
+  right: 1.5em;
+  padding: 0.5rem 2rem;
+  height: 3rem;
+  border-style: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 50px;
+  font-size: 1rem; }
+  .tag-scene__submit:active, .tag-scene__submit:focus, .tag-scene__submit:hover {
+    outline: none;
+    background: #606060;
+    color: white; }
+  @media screen and (min-width: 992px) {
+    .tag-scene__submit {
+      bottom: 2.5rem;
+      right: 7rem; } }
+
+.tag-cloud {
+  max-height: 60%; }
+
+.tag-field {
+  position: relative;
+  margin: 0.5rem; }
+
+.tag-field__name {
+  padding: 1em;
+  width: auto;
+  color: #ffffff;
+  text-align: center;
+  border: 0.05rem solid #ffffff;
+  background-color: #606060;
+  border-radius: 50px; }
+
+.tag-field__delete {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #ffffff;
+  text-align: center;
+  border: 0.5px solid #ffffff;
+  background-color: #606060;
+  border-radius: 50px;
+  position: absolute;
+  right: -0.4rem;
+  top: 0;
+  z-index: 100; }
+
+.mood-cloud {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0; }
+  .mood-cloud__icon {
+    width: 2.8em;
+    height: 2.8em;
+    border: 0.5px solid #ffffff;
+    border-radius: 50px;
+    padding: 0.5rem;
+    cursor: pointer; }
+  @media screen and (min-width: 992px) {
+    .mood-cloud {
+      width: 30%;
+      margin-left: auto;
+      margin-right: auto; } }
+
+.result-scene {
+  text-align: center;
+  padding: 1em; }
+  @media screen and (min-width: 992px) {
+    .result-scene {
+      padding: 1em 10%; } }
+
+.result-scene__playlists {
+  margin-top: 1em; }
+
+.result-card__button {
+  background: #282828;
+  display: inline-block;
+  float: right;
+  vertical-align: center;
+  font-size: 2rem;
+  color: #ffffff;
+  z-index: 1000000;
+  position: absolute;
+  right: 1em; }
+  @media screen and (min-width: 992px) {
+    .result-card__button {
+      right: 10.8%; } }
+
+.result-card {
+  border-bottom: 0.1px solid white; }
+
+.result-card__playlist-item {
+  -webkit-transition: height 0.8s;
+  /* Safari */
+  transition: height 0.8s;
+  height: 80px;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%; }
+  .result-card__playlist-item__active {
+    -webkit-transition: height 0.8s;
+    /* Safari */
+    transition: height 0.8s;
+    height: 380px;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%; }

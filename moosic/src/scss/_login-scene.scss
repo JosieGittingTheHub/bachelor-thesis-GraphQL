@@ -1,0 +1,115 @@
+#root, .app, .app__content {
+  height: 100%;
+  width: 100%;
+}
+
+.login-scene {
+  height: 100%;
+  background: url('./assets/startscreen-background-mobile.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  font-style: $font-text;
+  color: white;
+
+  @media screen and (min-width: $screen-md) {
+    background: url('./assets/startscreen-background-desktop.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 1em 10%;
+  }
+}
+
+.slick-dots{
+  li {
+    margin-left: 0em;
+    margin-right: 0em;
+
+    button:before, button:focus:before, button:hover:before {
+      color: #ffffff !important;
+      opacity: .50 ;
+    }
+
+    &.slick-active {
+      button:before {
+        opacity: .99;
+
+      }
+    }
+  }
+
+  position: relative;
+}
+
+
+.slider-item{
+  text-align: center;
+  color: white;
+  font-family: $font-style-bold;
+}
+
+.slider-item__text{
+  margin: 0 10%;
+  font-size: $font-md;
+  font-family: $font-style-light;
+}
+
+.login-info-view {
+  @media screen and (min-width: $screen-md) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  display: none;
+  margin-top: 3em;
+}
+
+.login-info-carousel {
+  @media screen and (min-width: $screen-md) {
+    display: none;
+  }
+  display: block;
+  margin-top: 1.5rem;
+}
+
+.login-info-view__image, .login-info-carousel__image {
+  width: auto;
+  height: 3rem;
+  margin: auto;
+  @media screen and (min-width: $screen-md) {
+    margin-left: 42%;
+  }
+  margin-top: 2em;
+}
+
+.login-button {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 2rem;
+  background: $color-spotify-green;
+  width: 60%;
+  border-radius: $border-rounded;
+  padding: 0.8rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  outline: none;
+  font-size: $font-sm;
+  text-align: center;
+
+  @media screen and (min-width: $screen-md) {
+    bottom: 9em;
+    font-size: $font-md;
+    width: 25%;
+    padding: 1rem 2rem;
+  }
+}
+
