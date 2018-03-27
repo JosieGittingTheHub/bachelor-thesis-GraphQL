@@ -5,6 +5,7 @@ class TagCloud extends Component {
 
   render() {
     var tags = this.props.tags
+    console.log(tags)
     let removeFunction = this.props.removeTagByName
     return (
       <div className="tag-cloud" >

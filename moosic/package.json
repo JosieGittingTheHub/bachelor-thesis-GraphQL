@@ -3,16 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-client-preset": "^1.0.8",
     "axios": "^0.16.1",
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.8.0",
     "history": "^1.17.0",
     "morgan": "^1.6.1",
     "querystring": "^0.2.0",
     "react": "^15.5.4",
+    "react-apollo": "^2.1.1",
     "react-dom": "^15.5.4",
     "react-router": "^3.0.0",
+    "react-router-dom": "^4.2.2",
     "react-slick": "^0.14.11",
     "request": "^2.81.0",
     "spotify-web-api-node": "^2.4.0"
@@ -27,10 +32,10 @@
     "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
     "react-scripts": "1.0.7",
-    "react-test-renderer": "^15.6.1" 
+    "react-test-renderer": "^15.6.1"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\" \"npm run watch-css\"",
+    "start": "concurrently \"npm run client\" \"npm run watch-css\"",
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",

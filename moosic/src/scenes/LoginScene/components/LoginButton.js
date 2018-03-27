@@ -6,7 +6,7 @@ class LoginButton extends Component {
 
   render() {
       return(
-          <a href="http://localhost:3001/api/login" className="login-button">L O G I N &nbsp; W I T H &nbsp; S P O T I F Y</a>
+          <a onClick={this.props.onLogin} className="login-button">L O G I N &nbsp; W I T H &nbsp; S P O T I F Y</a>
         )}
 }
 

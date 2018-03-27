@@ -9,19 +9,22 @@ import MoodCloud from '../../components/MoodCloud';
 class TagScene extends Component {
 
   render() {
+
+    console.log('hihihi')
+    console.log(this.props)
     return (
       <div className="tag-scene">
           <img className="moosic-label" src={Logo} alt="Moosic-Logo"/>
-          <SearchField addTag={this.props.addTag}/>
-          <MoodCloud addTag={this.props.addTag}/>
+          <SearchField addTag={this.props.data.addTag}/>
+          <MoodCloud addTag={this.props.data.addTag}/>
           <div className="tag-scene__cloud">
-            <TagCloud tags={this.props.tags} removeTagByName={this.props.removeTagByName}/>
+            <TagCloud tags={this.props.data.tags} removeTagByName={this.props.data.removeTagByName}/>
           </div>
           <div className="tag-scene__description">
               <img className="tag-scene__description__img" src={BackgroundIcon} alt="Tag-Logo"/>
               <p>Enter or select your mood to tell moosic what kind of playlists are perfect for you now.</p>
           </div>
-          <input type="button" className="tag-scene__submit" value="G O  F O R  I T" onClick={this.props.getPlaylists}/>
+          <input type="button" className="tag-scene__submit" value="G O  F O R  I T" onClick={this.props.data.getPlaylists}/>
       </div>
     );
   }

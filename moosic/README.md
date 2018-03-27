@@ -12,7 +12,7 @@ moosic is a mobile first web app which allows Spotify users to find and use play
 3. Run `$ docker run -p 3000:3000 -p 3001:3001 moosic`
 4. Open Browser on `http://localhost:3000/`
 
-# Testing: 
+## Testing: 
 **To start the tests, do the following steps:**
 1. Run `$ npm install` in your project directory
 2. Run `$ npm test` 

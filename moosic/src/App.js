@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { getPlaylists } from './services/playlistService';
 import { hashHistory } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
+import Login from './scenes/LoginScene';
+import TagScene from './scenes/TagScene';
+import ResultScene from './scenes/ResultScene';
 import './App.css';
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
@@ -30,6 +36,11 @@ export default class App extends Component {
   updatePlaylists = () => {
     this.clearPlaylists()
     this.state.tags.forEach(function(tag) {
+
+      // TODO: foreach tag use filter query
+      // add result to playlists array
+
+
       getPlaylists(tag)
       .then((playlists) => {
         let newPlaylists = this.state.playlists
@@ -83,20 +94,38 @@ export default class App extends Component {
   }
 
   render() {
-     const childrenWithProps = React.Children.map(this.props.children,
-     (child) => React.cloneElement(child, {
-       playlists: this.state.playlists, tags: this.state.tags, getPlaylists: this.showResults, addTag: this.addTag, removeTagByName: this.removeTagByName
-     })
-    );
+    const data = {
+      playlists: this.state.playlists, tags: this.state.tags, getPlaylists: this.showResults, addTag: this.addTag, removeTagByName: this.removeTagByName
+    }
+
+    console.log('servst du schon?', this.props.feedQuery.feed);
 
     return (
       <div className="app">
         <div className="app__header">
         </div>
         <div className="app__content">
-          {childrenWithProps}
+          <Switch>
+            <Route exact path="/login" render={(props) => <Login {...props} data={data}/>} />
+            <Route exact path="/tags" render={(props) => <TagScene {...props} data={data}/>}/>
+            <Route exact path="/results" render={(props) => <ResultScene {...props} data={data}/>}/>
+          </Switch>
         </div>
       </div>
     );
   }
 }
+
+// 1
+const FEED_QUERY = gql`
+  # 2
+  query FeedQuery {
+    feed {
+      title
+      spotifyURI
+    }
+  }
+`
+
+// 3
+export default graphql(FEED_QUERY, { name: 'feedQuery' }) (App)
