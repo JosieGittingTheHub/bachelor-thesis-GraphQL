@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { getPlaylists } from './services/playlistService';
 import { hashHistory } from 'react-router';
 import { Switch, Route } from 'react-router-dom';
 import Login from './scenes/LoginScene';
