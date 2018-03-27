@@ -33,64 +33,23 @@ class App extends Component {
     }
   }
 
-// //Update playlists for given tags
-//   updatePlaylists = () => {
-//     this.clearPlaylists()
-//     this.state.tags.forEach(function(tag) {
-
-//       // TODO: foreach tag use filter query
-//       // add result to playlists array
-
-//     //   getPlaylists(tag)
-//     //   .then((playlists) => {
-//     //     let newPlaylists = this.state.playlists
-//     //     playlists.items.forEach(function(playlist) {
-//     //       newPlaylists.push(playlist)
-//     //     })
-//     //     this.setState({playlists: newPlaylists})
-//     //   })
-//     //   .catch((err) => {
-//     //     console.log("error")
-//     //     hashHistory.push('/');
-//     //   })
-//     }, this); 
-//   }
-
-
+//Query GraphQL Server to get playlists for each mood
   updatePlaylists = async () => {
-    // const filter = this.state.tags[0];
-    // console.log('filter', filter);
-    // const result = await this.props.client.query({
-    //   query: FEED_SEARCH_QUERY,
-    //   variables: { filter },
-    // });
-    // const playlists = result.data.feed;
-
     let playlists = [];
-
-    for (let filter in this.state.tags) {
+    for (let filter of this.state.tags) {
       const result = await this.props.client.query({
         query: FEED_SEARCH_QUERY,
         variables: { filter },
       });
-      playlists.push(result.data.feed[0]);
+      playlists.push(...result.data.feed);
     }
-
     this.setState({ playlists });
     console.log('playlist state updated', this.state.playlists);
   }
 
-//Redirect to Result-Scene, shuffle and display playlists 
-  showResults = () => {
-      this.shufflePlaylists()
-      if(this.state.tags.length !== 0){
-        hashHistory.push('/results');
-      }
-  }
-
 //Shuffle order of playlist-results
-  shufflePlaylists() {
-    let shuffledPlaylists = this.state.playlists
+  shufflePlaylists = () => {
+    let shuffledPlaylists = this.state.playlists;
     for (let i = shuffledPlaylists.length; i; i--) {
         let j = Math.floor(Math.random() * i);
         [shuffledPlaylists[i - 1], shuffledPlaylists[j]] = [shuffledPlaylists[j], shuffledPlaylists[i - 1]];
@@ -100,7 +59,7 @@ class App extends Component {
 
 //Remove tag from array
   removeTagByName = (name) => {
-    let newTags = this.state.tags
+    let newTags = this.state.tags;
     let i = newTags.indexOf(name);
     if(i !== -1) {
       newTags.splice(i, 1);
@@ -109,17 +68,21 @@ class App extends Component {
     if(newTags.length === 0 ){
       hashHistory.push('/tags');
     }
-    this.updatePlaylists()
+    this.updatePlaylists();
   }
 
 //Clear all playlists 
   clearPlaylists = () => {
-    this.setState({playlists: []})
+    this.setState({playlists: []});
   }
 
   render() {
     const data = {
-      playlists: this.state.playlists, tags: this.state.tags, getPlaylists: this.showResults, addTag: this.addTag, removeTagByName: this.removeTagByName
+      playlists: this.state.playlists, 
+      tags: this.state.tags, 
+      shufflePlaylists: this.shufflePlaylists, 
+      addTag: this.addTag, 
+      removeTagByName: this.removeTagByName
     }
 
     return (
@@ -128,7 +91,7 @@ class App extends Component {
         </div>
         <div className="app__content">
           <Switch>
-            <Route exact path="/login" render={(props) => <Login {...props} data={data}/>} />
+            <Route exact path="/" render={(props) => <Login {...props} data={data}/>} />
             <Route exact path="/tags" render={(props) => <TagScene {...props} data={data}/>}/>
             <Route exact path="/results" render={(props) => <ResultScene {...props} data={data}/>}/>
           </Switch>
@@ -137,39 +100,14 @@ class App extends Component {
     );
   }
 
-
 }
 
 const FEED_SEARCH_QUERY = gql`
   query FeedSearchQuery($filter: String!) {
     feed(filter: $filter) {
-      title
       spotifyURI
     }
   }
 `
 
-
-// // 1
-// const FEED_QUERY = gql`
-//   # 2
-//   query FeedQuery {
-//     feed(filter: "sad") {
-//       title
-//       spotifyURI
-//     }
-//   }
-// `
-
-// const query = `
-// query FeedQuery($filter: String!) {
-//   human(id: $someId) {
-//     name
-//   }
-// }
-// `;
-// const params = { filter: '1000' };
-// const result = await graphql(StarWarsSchema, query, null, null, params);
-
-// 3
 export default withApollo(App)

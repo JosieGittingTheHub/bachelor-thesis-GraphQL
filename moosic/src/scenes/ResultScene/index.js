@@ -24,7 +24,8 @@ class ResultScene extends Component {
           <TagCloud tags={this.props.data.tags} removeTagByName={this.props.data.removeTagByName}/>
           <div className="result-scene__playlists">
           {this.props.data.playlists ? this.props.data.playlists.map(function(playlist, i){
-            return(<ResultCard key={i} uri={playlist.uri}/>
+            console.log('alhsdflahjsdf', playlist.spotifyURI);
+            return(<ResultCard key={i} uri={playlist.spotifyURI}/>
             )
           }
           ) : null}

@@ -8,6 +8,16 @@ import MoodCloud from '../../components/MoodCloud';
 
 class TagScene extends Component {
 
+  //Redirect to Result-Scene, shuffle and display playlists 
+  showResults = () => {
+    this.props.data.shufflePlaylists();
+    if(this.props.data.tags.length !== 0){
+      this.props.history.push('/results');
+      console.log('huhu', this.props.history);
+      
+    }
+  }
+
   render() {
     return (
       <div className="tag-scene">
@@ -21,7 +31,7 @@ class TagScene extends Component {
               <img className="tag-scene__description__img" src={BackgroundIcon} alt="Tag-Logo"/>
               <p>Enter or select your mood to tell moosic what kind of playlists are perfect for you now.</p>
           </div>
-          <input type="button" className="tag-scene__submit" value="G O  F O R  I T" onClick={this.props.data.getPlaylists}/>
+          <input type="button" className="tag-scene__submit" value="G O  F O R  I T" onClick={this.showResults}/>
       </div>
     );
   }

@@ -26,6 +26,8 @@ class ResultCard extends Component {
     if(this.state.detail){
       classes = "result-card__playlist-item__active"
     }
+
+    console.log('result uri', this.props);
     
     return (
       <div className="result-card" onClick={this.showDetail}>
