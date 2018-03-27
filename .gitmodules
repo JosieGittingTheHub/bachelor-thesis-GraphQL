@@ -1,0 +1,3 @@
+[submodule "ss17-moosic"]
+	path = ss17-moosic
+	url = https://gitlab.mi.hdm-stuttgart.de/mwa/ss17-moosic.git
