@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 **Project name:** moosic
 
 **Project members:** Aurelia Bachmann (ab180), Sonja Nürenberg (sn043), Josefine Hartung (jh144), Antonia Verdier (av027)
@@ -16,3 +17,25 @@ moosic is a mobile first web app which allows Spotify users to find and use play
 **To start the tests, do the following steps:**
 1. Run `$ npm install` in your project directory
 2. Run `$ npm test` 
+=======
+# moosic
+
+moosic is a mobile web app that has been developed during the course [Mobile Web Applications](https://www.hdm-stuttgart.de/vorlesung_detail?vorlid=5212603) at the [Hochschule der Medien](https://www.hdm-stuttgart.de/index_html) in Stuttgart in a team of four students (Aurelia Bachmann, Antonia Verdier, Sonja Nürenberg, Josefine Hartung). https://www.hdm-stuttgart.de/vorlesung_detail?vorlid=5212603
+
+
+## Functionality
+
+moosic provides a list of Spotify playlists depending on the users mood, which then can be played directly in the app.
+
+
+## Usage
+
+Install project dependencies:
+
+`$ npm install`
+
+
+Start the app:
+
+`$ npm start`
+>>>>>>> edd457c0078e9f1ffd69251a217b716c69bd570f
