@@ -9,7 +9,7 @@ import Logo from '../../assets/moosic-logo-white.png';
 class ResultScene extends Component {
 
   componentDidMount = () => {
-    if(this.props.tags.length === 0 || this.props.playlists.length === 0){
+    if(this.props.data.tags.length === 0 || this.props.data.playlists.length === 0){
       hashHistory.push('/tags');
     }
   }
@@ -19,11 +19,11 @@ class ResultScene extends Component {
     return (
       <div className="result-scene">
           <img className="moosic-label moosic-label--result" src={Logo} alt="Moosic-Logo"/>
-          <SearchField addTag={this.props.addTag}/>
-          <MoodCloud addTag={this.props.addTag}/>
-          <TagCloud tags={this.props.tags} removeTagByName={this.props.removeTagByName}/>
+          <SearchField addTag={this.props.data.addTag}/>
+          <MoodCloud addTag={this.props.data.addTag}/>
+          <TagCloud tags={this.props.data.tags} removeTagByName={this.props.data.removeTagByName}/>
           <div className="result-scene__playlists">
-          {this.props.playlists ? this.props.playlists.map(function(playlist, i){
+          {this.props.data.playlists ? this.props.data.playlists.map(function(playlist, i){
             return(<ResultCard key={i} uri={playlist.uri}/>
             )
           }

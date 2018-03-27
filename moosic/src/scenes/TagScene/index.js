@@ -9,9 +9,6 @@ import MoodCloud from '../../components/MoodCloud';
 class TagScene extends Component {
 
   render() {
-
-    console.log('hihihi')
-    console.log(this.props)
     return (
       <div className="tag-scene">
           <img className="moosic-label" src={Logo} alt="Moosic-Logo"/>

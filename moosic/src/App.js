@@ -6,8 +6,9 @@ import Login from './scenes/LoginScene';
 import TagScene from './scenes/TagScene';
 import ResultScene from './scenes/ResultScene';
 import './App.css';
-import { graphql } from 'react-apollo'
+import { withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
+import { forEach } from 'async';
 
 class App extends Component {
   constructor(props) {
@@ -32,28 +33,51 @@ class App extends Component {
     }
   }
 
-//Update playlists for given tags
-  updatePlaylists = () => {
-    this.clearPlaylists()
-    this.state.tags.forEach(function(tag) {
+// //Update playlists for given tags
+//   updatePlaylists = () => {
+//     this.clearPlaylists()
+//     this.state.tags.forEach(function(tag) {
 
-      // TODO: foreach tag use filter query
-      // add result to playlists array
+//       // TODO: foreach tag use filter query
+//       // add result to playlists array
+
+//     //   getPlaylists(tag)
+//     //   .then((playlists) => {
+//     //     let newPlaylists = this.state.playlists
+//     //     playlists.items.forEach(function(playlist) {
+//     //       newPlaylists.push(playlist)
+//     //     })
+//     //     this.setState({playlists: newPlaylists})
+//     //   })
+//     //   .catch((err) => {
+//     //     console.log("error")
+//     //     hashHistory.push('/');
+//     //   })
+//     }, this); 
+//   }
 
 
-      getPlaylists(tag)
-      .then((playlists) => {
-        let newPlaylists = this.state.playlists
-        playlists.items.forEach(function(playlist) {
-          newPlaylists.push(playlist)
-        })
-        this.setState({playlists: newPlaylists})
-      })
-      .catch((err) => {
-        console.log("error")
-        hashHistory.push('/');
-      })
-    }, this); 
+  updatePlaylists = async () => {
+    // const filter = this.state.tags[0];
+    // console.log('filter', filter);
+    // const result = await this.props.client.query({
+    //   query: FEED_SEARCH_QUERY,
+    //   variables: { filter },
+    // });
+    // const playlists = result.data.feed;
+
+    let playlists = [];
+
+    for (let filter in this.state.tags) {
+      const result = await this.props.client.query({
+        query: FEED_SEARCH_QUERY,
+        variables: { filter },
+      });
+      playlists.push(result.data.feed[0]);
+    }
+
+    this.setState({ playlists });
+    console.log('playlist state updated', this.state.playlists);
   }
 
 //Redirect to Result-Scene, shuffle and display playlists 
@@ -98,8 +122,6 @@ class App extends Component {
       playlists: this.state.playlists, tags: this.state.tags, getPlaylists: this.showResults, addTag: this.addTag, removeTagByName: this.removeTagByName
     }
 
-    console.log('servst du schon?', this.props.feedQuery.feed);
-
     return (
       <div className="app">
         <div className="app__header">
@@ -114,18 +136,40 @@ class App extends Component {
       </div>
     );
   }
+
+
 }
 
-// 1
-const FEED_QUERY = gql`
-  # 2
-  query FeedQuery {
-    feed {
+const FEED_SEARCH_QUERY = gql`
+  query FeedSearchQuery($filter: String!) {
+    feed(filter: $filter) {
       title
       spotifyURI
     }
   }
 `
 
+
+// // 1
+// const FEED_QUERY = gql`
+//   # 2
+//   query FeedQuery {
+//     feed(filter: "sad") {
+//       title
+//       spotifyURI
+//     }
+//   }
+// `
+
+// const query = `
+// query FeedQuery($filter: String!) {
+//   human(id: $someId) {
+//     name
+//   }
+// }
+// `;
+// const params = { filter: '1000' };
+// const result = await graphql(StarWarsSchema, query, null, null, params);
+
 // 3
-export default graphql(FEED_QUERY, { name: 'feedQuery' }) (App)
+export default withApollo(App)
