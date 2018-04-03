@@ -43,7 +43,6 @@ class App extends Component {
       playlists.push(...result.data.feed);
     }
     this.setState({ playlists });
-    console.log('playlist state updated', this.state.playlists);
   }
 
 //Shuffle order of playlist-results
