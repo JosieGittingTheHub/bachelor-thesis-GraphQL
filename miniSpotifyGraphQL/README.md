@@ -1,6 +1,5 @@
 # Mini Spotify GraphQL Server
 
-## Description:
 **miniSpotifyGraphQL** is a example implementation of a Spotify GraphQL API that contains a part of the operations possible in the real Spotify API
 
 
